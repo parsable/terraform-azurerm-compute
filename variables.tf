@@ -240,3 +240,9 @@ variable "os_profile_secrets" {
   type        = list(map(string))
   default     = []
 }
+
+variable "create_network_security_group" {
+  description = "Boolean to make creation of network_security_group optional"
+  type        = bool
+  default     = false
+}
