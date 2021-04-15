@@ -3,14 +3,15 @@ output "vm_ids" {
   value       = concat(azurerm_virtual_machine.vm-windows.*.id, azurerm_virtual_machine.vm-linux.*.id)
 }
 
+# Trick to grab output from a resource of something that may or may not exist
 output "network_security_group_id" {
   description = "id of the security group provisioned"
-  value       = azurerm_network_security_group.vm.id
+  value       = concat(azurerm_network_security_group.vm.*.id, [""])[0]
 }
 
 output "network_security_group_name" {
   description = "name of the security group provisioned"
-  value       = azurerm_network_security_group.vm.name
+  value       = concat(azurerm_network_security_group.vm.*.id, [""])[0]
 }
 
 output "network_interface_ids" {
